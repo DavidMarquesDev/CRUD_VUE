@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
+import IndexPage from '@/pages/IndexPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 
 const requireAuth = (_to: unknown, _from: unknown, next: (path?: string) => void): void =>
@@ -19,7 +20,8 @@ export const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/home',
+            name: 'index',
+            component: IndexPage,
         },
         {
             path: '/login',

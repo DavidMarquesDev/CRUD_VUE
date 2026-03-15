@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { authService } from '@/services/auth.service'
 import { homeService, type HomeCardData } from '@/services/home.service'
 
