@@ -239,6 +239,57 @@ a {
     color: #bac4da;
 }
 
+.home-actions {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.home-actions a {
+    text-decoration: none;
+    background: #0b1224;
+    border: 1px solid #2b3a5a;
+    color: #dbe7ff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: 600;
+}
+
+.home-list-section {
+    margin-top: 20px;
+    background: #0f1629;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.home-list-section h2 {
+    margin: 0;
+}
+
+.home-list {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.home-list li {
+    background: #0a1020;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.home-list span {
+    color: #9fb2d7;
+}
+
 .loading-hint {
     margin-top: 18px;
     color: #94a3b8;
@@ -490,6 +541,136 @@ a {
     text-align: center;
 }
 
+.crud-page {
+    min-height: 100vh;
+    padding: 24px clamp(20px, 4vw, 56px) 48px;
+    display: grid;
+    gap: 18px;
+}
+
+.crud-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.crud-header h1 {
+    margin: 0;
+}
+
+.crud-header p {
+    margin: 6px 0 0;
+    color: #a5b4d0;
+}
+
+.crud-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.crud-header-actions button {
+    border: 1px solid #2a3854;
+    background: #0f172a;
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.crud-form-card,
+.crud-table-card {
+    background: #0f1629;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.crud-form-card h2,
+.crud-table-card h2 {
+    margin: 0 0 14px;
+}
+
+.crud-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.crud-form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.crud-form-grid input,
+.crud-form-grid select {
+    border: 1px solid #2f3a52;
+    background: #0c1120;
+    border-radius: 10px;
+    color: #f8fafc;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+}
+
+.crud-form-actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+}
+
+.crud-form-actions button {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.crud-form-actions button:first-child {
+    background: linear-gradient(90deg, #ff4e1f, #ffbe0b);
+    color: #101522;
+}
+
+.crud-form-actions button:last-child {
+    background: #23314f;
+    color: #eff6ff;
+}
+
+.crud-table-card table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 840px;
+}
+
+.crud-table-card th,
+.crud-table-card td {
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    font-size: 0.92rem;
+}
+
+.crud-table-card th {
+    color: #9fb2d7;
+}
+
+.crud-row-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.crud-row-actions button {
+    border: 1px solid #2a3854;
+    background: #111a30;
+    color: #e5edff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
 @media (max-width: 960px) {
     .auth-page {
         grid-template-columns: 1fr;
@@ -512,6 +693,10 @@ a {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .crud-table-card {
+        overflow-x: auto;
+    }
 }
 
 @media (max-width: 680px) {
@@ -527,5 +712,14 @@ a {
 
     .product-carousel {
         grid-template-columns: 1fr;
+    }
+
+    .home-list li {
+        flex-direction: column;
+    }
+
+    .crud-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

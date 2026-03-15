@@ -1,4 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import CrudCompaniesPage from '@/pages/CrudCompaniesPage.vue'
+import CrudCustomersPage from '@/pages/CrudCustomersPage.vue'
+import CrudProductsPage from '@/pages/CrudProductsPage.vue'
+import CrudUsersPage from '@/pages/CrudUsersPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import IndexPage from '@/pages/IndexPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
@@ -32,6 +36,30 @@ export const router = createRouter({
             path: '/home',
             name: 'home',
             component: HomePage,
+            beforeEnter: requireAuth,
+        },
+        {
+            path: '/crud/products',
+            name: 'crud-products',
+            component: CrudProductsPage,
+            beforeEnter: requireAuth,
+        },
+        {
+            path: '/crud/companies',
+            name: 'crud-companies',
+            component: CrudCompaniesPage,
+            beforeEnter: requireAuth,
+        },
+        {
+            path: '/crud/customers',
+            name: 'crud-customers',
+            component: CrudCustomersPage,
+            beforeEnter: requireAuth,
+        },
+        {
+            path: '/crud/users',
+            name: 'crud-users',
+            component: CrudUsersPage,
             beforeEnter: requireAuth,
         },
     ],

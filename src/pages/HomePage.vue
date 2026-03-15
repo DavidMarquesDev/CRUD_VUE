@@ -2,31 +2,28 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { authService } from '@/services/auth.service'
-import { homeService, type HomeCardData } from '@/services/home.service'
+import { dashboardService, type DashboardCard } from '@/services/dashboard.service'
 
 const router = useRouter()
 const userName = ref<string>('Usuário')
 const loading = ref<boolean>(true)
-const cards = ref<HomeCardData[]>([])
-
-const fallbackCards: HomeCardData[] = [
-    { title: 'Empresas ativas', total: 24 },
-    { title: 'Clientes cadastrados', total: 378 },
-    { title: 'Fornecedores homologados', total: 62 },
-    { title: 'Produtos em catálogo', total: 1249 },
-]
+const cards = ref<DashboardCard[]>([])
+const productsPreview = ref<{ id: number; name: string; sku: string }[]>([])
+const errorMessage = ref<string>('')
 
 const loadData = async (): Promise<void> =>
 {
     loading.value = true
+    errorMessage.value = ''
     try {
-        const [meResponse, homeResponse] = await Promise.all([authService.me(), homeService.index()])
+        const [meResponse, summary] = await Promise.all([authService.me(), dashboardService.summary()])
         userName.value = meResponse.data.name
-        cards.value = homeResponse.data.cards && homeResponse.data.cards.length > 0
-            ? homeResponse.data.cards
-            : fallbackCards
+        cards.value = summary.cards
+        productsPreview.value = summary.productsPreview
     } catch {
-        cards.value = fallbackCards
+        cards.value = []
+        productsPreview.value = []
+        errorMessage.value = 'Não foi possível carregar os dados reais da API.'
     } finally {
         loading.value = false
     }
@@ -64,8 +61,7 @@ onMounted(async () =>
         <section class="home-hero">
             <h1>Painel Comercial</h1>
             <p>
-                Layout com destaque visual para ofertas e indicadores, inspirado em vitrines de alto
-                impacto para leitura rápida dos números do negócio.
+                Monitoramento em tempo real dos dados da API e acesso rápido aos módulos de gestão.
             </p>
         </section>
 
@@ -77,13 +73,30 @@ onMounted(async () =>
         </section>
 
         <section class="home-banner">
-            <h2>Próximo passo do projeto</h2>
+            <h2>Gestão rápida</h2>
             <p>
-                Integrar os módulos de listagem e CRUD de Empresas, Clientes, Fornecedores e Produtos
-                seguindo o plano de implementação definido.
+                Acesse os módulos CRUD para manter produtos, empresas, clientes e usuários.
             </p>
+            <div class="home-actions">
+                <router-link to="/crud/products">Produtos</router-link>
+                <router-link to="/crud/companies">Empresas</router-link>
+                <router-link to="/crud/customers">Clientes</router-link>
+                <router-link to="/crud/users">Usuários</router-link>
+            </div>
         </section>
 
+        <section class="home-list-section">
+            <h2>Produtos recentes</h2>
+            <ul v-if="productsPreview.length > 0" class="home-list">
+                <li v-for="item in productsPreview" :key="item.id">
+                    <strong>{{ item.name }}</strong>
+                    <span>SKU: {{ item.sku }}</span>
+                </li>
+            </ul>
+            <p v-else class="loading-hint">Nenhum produto retornado para preview.</p>
+        </section>
+
+        <p v-if="errorMessage" class="auth-error">{{ errorMessage }}</p>
         <p v-if="loading" class="loading-hint">Carregando dados do dashboard...</p>
     </div>
 </template>
