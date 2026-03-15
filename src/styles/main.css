@@ -1,0 +1,255 @@
+:root {
+    font-family: Inter, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.4;
+    color: #f1f5f9;
+    background-color: #06070c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(235, 69, 30, 0.14), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(255, 221, 95, 0.11), transparent 35%),
+        #06070c;
+}
+
+a {
+    color: inherit;
+}
+
+.auth-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.auth-highlight {
+    padding: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.auth-highlight h1 {
+    margin: 0;
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+    line-height: 1.1;
+    max-width: 620px;
+}
+
+.auth-highlight p {
+    margin: 0;
+    color: #b8c0d1;
+    max-width: 560px;
+}
+
+.auth-badge {
+    width: fit-content;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14rem;
+    color: #0d1117;
+    background: linear-gradient(90deg, #ffbe0b, #ff6d00);
+    border-radius: 999px;
+    padding: 8px 14px;
+}
+
+.auth-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+.auth-form {
+    width: min(420px, 100%);
+    background: rgba(16, 21, 34, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    backdrop-filter: blur(4px);
+}
+
+.auth-form h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.auth-form p {
+    margin: 0 0 12px;
+    color: #95a0b8;
+}
+
+.auth-form label {
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.auth-form input {
+    border: 1px solid #2f3a52;
+    background: #0c1120;
+    border-radius: 10px;
+    color: #f8fafc;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.auth-form input:focus {
+    outline: 2px solid #ff8c42;
+    border-color: #ff8c42;
+}
+
+.auth-form button {
+    margin-top: 10px;
+    border: 0;
+    background: linear-gradient(90deg, #ff4e1f, #ffbe0b);
+    color: #101522;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.auth-form button:hover {
+    transform: translateY(-1px);
+}
+
+.auth-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.auth-error {
+    margin-top: 6px;
+    color: #ff8f8f;
+}
+
+.home-page {
+    min-height: 100vh;
+    padding: 24px clamp(20px, 4vw, 56px) 48px;
+}
+
+.home-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.home-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-logo .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff6d00;
+    box-shadow: 0 0 12px #ff6d00;
+}
+
+.home-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.home-user button {
+    border: 1px solid #263041;
+    background: #0e1321;
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.home-hero {
+    background: linear-gradient(120deg, rgba(255, 107, 53, 0.22), rgba(29, 36, 59, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 20px;
+    padding: clamp(24px, 4vw, 36px);
+}
+
+.home-hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.6rem, 2.7vw, 2.5rem);
+}
+
+.home-hero p {
+    margin: 0;
+    color: #c5cee2;
+    max-width: 780px;
+}
+
+.stats-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+}
+
+.stat-card {
+    background: #0f1629;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #a4afc5;
+    font-size: 0.9rem;
+}
+
+.stat-card strong {
+    margin-top: 6px;
+    display: inline-block;
+    font-size: 1.9rem;
+    color: #ffd166;
+}
+
+.home-banner {
+    margin-top: 26px;
+    border-radius: 16px;
+    padding: 24px;
+    background: linear-gradient(130deg, #11192b, #1a2740);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.home-banner h2 {
+    margin: 0;
+}
+
+.home-banner p {
+    margin: 8px 0 0;
+    color: #bac4da;
+}
+
+.loading-hint {
+    margin-top: 18px;
+    color: #94a3b8;
+}
+
+@media (max-width: 960px) {
+    .auth-page {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-highlight {
+        padding: 44px 24px 12px;
+    }
+}
